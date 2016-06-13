@@ -3,12 +3,14 @@ language: node_js
 node_js:
   - "4"
 
-sudo: false
+sudo: required
+dist: trusty
 
 matrix:
   include:
     - os: osx
     - os: linux
+      compiler: clang
 
 cache:
   directories:
@@ -17,6 +19,9 @@ cache:
 addons:
   apt:
     packages:
+      - g++
+      - gcc
+      - clang
       - xvfb
 
 before_install:
