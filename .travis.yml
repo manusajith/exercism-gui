@@ -5,6 +5,11 @@ node_js:
 
 sudo: false
 
+matrix:
+  include:
+    - os: osx
+    - os: linux
+
 cache:
   directories:
     - node_modules
@@ -12,11 +17,10 @@ cache:
 before_install:
   - npm config set spin false
   - npm install -g bower
-  - npm install phantomjs-prebuilt
 
 install:
   - npm install
   - bower install
 
 script:
-  - npm test
+  - ember electron:package --platform $TRAVIS_OS_NAME --arch x64
