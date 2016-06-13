@@ -36,4 +36,7 @@ install:
 script:
   - ls -lah
   - ember electron:package --platform $TRAVIS_OS_NAME --arch x64
-  - ls -lah
+  - ls -lah node_modules
+  - ls -lah electron-builds
+  - echo $PATH
+  - node --version
