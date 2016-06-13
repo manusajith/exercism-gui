@@ -17,6 +17,7 @@ matrix:
 cache:
   directories:
     - node_modules
+    - node_modules/electron-prebuilt
 
 addons:
   apt:
@@ -33,4 +34,6 @@ install:
   - bower install
 
 script:
+  - ls -lah
   - ember electron:package --platform $TRAVIS_OS_NAME --arch x64
+  - ls -lah
