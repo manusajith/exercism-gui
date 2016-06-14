@@ -1,7 +1,7 @@
 {
   "name": "exercism-gui",
   "version": "0.0.0",
-  "description": "Small description for exercism-gui goes here",
+  "description": "exercism-gui",
   "private": true,
   "directories": {
     "doc": "doc",
