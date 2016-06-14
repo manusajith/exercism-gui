@@ -1,7 +1,6 @@
 ---
 language: node_js
-node_js:
-  - "4"
+node_js: "4"
 
 matrix:
   include:
@@ -11,7 +10,7 @@ matrix:
     - os: linux
       sudo: required
       dist: trusty
-      env: ELECTRON_PLATFORM=linux
+      env: ELECTRON_PLATFORM=linux CC=clang CXX=clang++ npm_config_clang=1
 
 cache:
   directories:
