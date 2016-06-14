@@ -35,8 +35,11 @@ install:
 
 script:
   - ls -lah
-  - ember electron:package --platform $TRAVIS_OS_NAME --arch x64
-  - ls -lah node_modules
-  - ls -lah electron-builds
+  - npm config list
+  - ls -lah $HOME/.npm/lib/node_modules/ /usr/local/share/npm/ /usr/local/share/npm/bin node_modules
+  - echo $PATH
+  - export PATH="node_modules/ember-cli/bin:$PATH"
   - echo $PATH
   - node --version
+  - ember electron:package --platform $TRAVIS_OS_NAME --arch x64
+  - ls -lah electron-builds
