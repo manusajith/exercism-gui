@@ -10,8 +10,9 @@ dist: trusty
 matrix:
   include:
     - os: osx
+      env: ELECTRON_PLATFORM=darwin
     - os: linux
-      env: CC=clang CXX=clang++ npm_config_clang=1
+      env: CC=clang CXX=clang++ npm_config_clang=1 ELECTRON_PLATFORM=linux
       compiler: clang
 
 cache:
@@ -34,12 +35,7 @@ install:
   - bower install
 
 script:
-  - ls -lah
-  - npm config list
-  - ls -lah $HOME/.npm/lib/node_modules/ /usr/local/share/npm/ /usr/local/share/npm/bin node_modules
+  - [ "$TRAVIS_OS_NAME" == "linux" ] && echo "linux" || export PATH="$PATH:node_modules/ember-cli/bin"
   - echo $PATH
-  - export PATH="node_modules/ember-cli/bin:$PATH"
-  - echo $PATH
-  - node --version
-  - ember electron:package --platform $TRAVIS_OS_NAME --arch x64
+  - ember electron:package --platform $ELECTRON_PLATFORM --arch x64
   - ls -lah electron-builds
