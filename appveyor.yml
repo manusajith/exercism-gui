@@ -1,0 +1,19 @@
+platform:
+  - x64
+
+cache:
+  - node_modules
+
+install:
+  - ps: Install-Product node 6 x64
+  - npm install npm -g
+  - npm install bower -g
+  - npm install
+  - bower install
+
+build_script:
+  - node --version
+  - ember electron:package --platform win32 --arch x64
+  - ps: ls electron-builds
+
+test: off
