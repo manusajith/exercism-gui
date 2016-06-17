@@ -1,8 +1,9 @@
-# This will only run on tagged commits
-# as it's purpose is for packaging for
-# Windows at release. This is set in the
-# appveyor account
 version: 0.0.{build}
+
+skip_non_tags: true
+
+build:
+    verbosity: minimal
 
 platform:
   - x64
