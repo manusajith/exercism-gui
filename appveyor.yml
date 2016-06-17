@@ -28,7 +28,6 @@ build_script:
 test: off
 
 deploy:
-  release: exercism-gui-win32-x64-$APPVEYOR_REPO_TAG_NAME
   provider: GitHub
   auth_token:
     secure: 4Lc+r0RBFpZLKT+JZ5tlHQsEttScYJBtrTQ9BmtYQqcZyXlMP8v/+wjrBRdtY4XO
