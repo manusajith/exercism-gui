@@ -42,7 +42,7 @@ after_success:
 #- if [ -z "$TRAVIS_TAG" ]; then echo "Done!"; exit 0; fi
 - export ARTIFACT_NAME=exercism-gui-$ELECTRON_PLATFORM-x64
 - ember electron:package --platform $ELECTRON_PLATFORM --arch x64
-- tar -C electron-builds -czvf electron-builds/$ARTIFACT_NAME.tar.gz $ARTIFACT_NAME
+- tar -C electron-builds -czvf electron-builds/$ARTIFACT_NAME-$TRAVIS_TAG.tar.gz $ARTIFACT_NAME
 - ls -lah electron-builds
 
 deploy:

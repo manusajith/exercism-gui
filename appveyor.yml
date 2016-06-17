@@ -31,6 +31,6 @@ deploy:
   provider: GitHub
   auth_token:
     secure: 4Lc+r0RBFpZLKT+JZ5tlHQsEttScYJBtrTQ9BmtYQqcZyXlMP8v/+wjrBRdtY4XO
-  artifact: electron-builds\.*.zip
+  artifact: /electron-builds\.*.zip/
   on:
     appveyor_repo_tag: true
