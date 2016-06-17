@@ -16,15 +16,11 @@ cache:
 environment:
   eu_package_name: exercism-gui-win32-x64-%APPVEYOR_REPO_TAG_NAME%.zip
 
-
 install:
   - ps: Install-Product node 6 x64
   - npm install bower -g
   - npm install
   - bower install
-
-artifacts:
-  - path: electron-builds\%eu_package_name%
 
 build_script:
   - node --version
@@ -32,12 +28,16 @@ build_script:
   - 7z a electron-builds\%eu_package_name% electron-builds\exercism-gui-win32-x64
   - ps: ls electron-builds
 
+artifacts:
+  - path: path: '**\*.zip'
+  - path: path: '**\electron-builds\*.zip'
+
 test: off
 
 deploy:
   provider: GitHub
   auth_token:
     secure: 4Lc+r0RBFpZLKT+JZ5tlHQsEttScYJBtrTQ9BmtYQqcZyXlMP8v/+wjrBRdtY4XO
-  artifact: electron-builds\%eu_package_name%
+  artifact: /electron-builds\.*\.zip/
   on:
     appveyor_repo_tag: true
