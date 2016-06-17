@@ -19,6 +19,9 @@ install:
   - npm install
   - bower install
 
+artifacts:
+  - path: electron-builds\**\*.zip
+
 build_script:
   - node --version
   - node node_modules\ember-cli\bin\ember electron:package --platform win32 --arch x64
