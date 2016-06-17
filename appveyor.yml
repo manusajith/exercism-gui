@@ -17,6 +17,9 @@ build_script:
   - node --version
   - cd
   - SET PATH=%cd%\node_modules\ember-cli\bin\;%PATH%
+  - echo %PATH%
+  - DIR %cd%\node_modules\ember-cli\bin
+  - SET
   - ember electron:package --platform win32 --arch x64
   - ps: ls electron-builds
 
