@@ -17,9 +17,18 @@ install:
 
 build_script:
   - node --version
-  - cd
-  - SET PATH=%cd%\node_modules\ember-cli\bin;%PATH%
   - node node_modules\ember-cli\bin\ember electron:package --platform win32 --arch x64
+  - 7z a electron-builds\exercism-gui-win32-x64-%APPVEYOR_REPO_TAG_NAME%.zip electron-builds\exercism-gui-win32-x64
   - ps: ls electron-builds
 
 test: off
+
+deploy:
+  release: exercism-gui-win32-x64-$APPVEYOR_REPO_TAG_NAME
+  provider: GitHub
+  auth_token:
+    secure: iay/2iEavXrbHvw+S3KgMxv7zjiBlS81pxFgFjbxVQa4SMXlkpkwgn3DyBai1erlTs9PBJBVtQ9q8ByYmq9IMqeiNSaBRGrhy1iYxLfJYyp717NTRZQ74X5hVYv8AvZNt6ny+cSd1loF6L9tiHFkm1BqsIs0r/Q05MQLW
+  artifact: electron-builds\.*.zip
+  on:
+    #branch: master
+    appveyor_repo_tag: true
