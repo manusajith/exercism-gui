@@ -5,10 +5,12 @@ platform:
 
 cache:
   - node_modules
+  - bower_components
+  - '%APPDATA%\npm-cache'
+  - '%APPDATA%\Roaming\bower'
 
 install:
   - ps: Install-Product node 6 x64
-  - npm install npm -g
   - npm install bower -g
   - npm install
   - bower install
@@ -16,10 +18,10 @@ install:
 build_script:
   - node --version
   - cd
-  - SET PATH=%cd%\node_modules\ember-cli\bin\;%PATH%
-  - echo %PATH%
+  - SET PATH=%cd%\node_modules\ember-cli\bin;%PATH%
   - DIR %cd%\node_modules\ember-cli\bin
   - SET
+  - node node_modules\ember-cli\bin\ember electron:package --platform win32 --arch x64
   - ember electron:package --platform win32 --arch x64
   - ps: ls electron-builds
 

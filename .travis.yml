@@ -16,6 +16,9 @@ matrix:
 cache:
   directories:
     - node_modules
+    - bower_components
+    - $HOME/.npm
+    - $HOME/.cache # includes bowers cache
 
 addons:
   apt:
