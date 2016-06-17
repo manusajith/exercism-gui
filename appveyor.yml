@@ -1,3 +1,7 @@
+# This will only run on tagged commits
+# as it's purpose is for packaging for
+# Windows at release. This is set in the
+# appveyor account
 version: 0.0.{build}
 
 platform:
@@ -7,7 +11,6 @@ cache:
   - node_modules
   - bower_components
   - '%APPDATA%\npm-cache'
-  - '%APPDATA%\Roaming\bower'
 
 install:
   - ps: Install-Product node 6 x64
@@ -27,8 +30,7 @@ deploy:
   release: exercism-gui-win32-x64-$APPVEYOR_REPO_TAG_NAME
   provider: GitHub
   auth_token:
-    secure: iay/2iEavXrbHvw+S3KgMxv7zjiBlS81pxFgFjbxVQa4SMXlkpkwgn3DyBai1erlTs9PBJBVtQ9q8ByYmq9IMqeiNSaBRGrhy1iYxLfJYyp717NTRZQ74X5hVYv8AvZNt6ny+cSd1loF6L9tiHFkm1BqsIs0r/Q05MQLW
+    secure: 4Lc+r0RBFpZLKT+JZ5tlHQsEttScYJBtrTQ9BmtYQqcZyXlMP8v/+wjrBRdtY4XO
   artifact: electron-builds\.*.zip
   on:
-    #branch: master
     appveyor_repo_tag: true
