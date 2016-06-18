@@ -30,7 +30,7 @@ build_script:
 
 artifacts:
   - path: 'electron-builds\*.zip'
-  - name: package
+    name: package
 
 test: off
 
