@@ -29,8 +29,8 @@ build_script:
   - ps: ls electron-builds
 
 artifacts:
-  - path: '**\*.zip'
-  - path: '**\electron-builds\*.zip'
+  - path: 'electron-builds\*.zip'
+  - name: package
 
 test: off
 
@@ -38,6 +38,5 @@ deploy:
   provider: GitHub
   auth_token:
     secure: 4Lc+r0RBFpZLKT+JZ5tlHQsEttScYJBtrTQ9BmtYQqcZyXlMP8v/+wjrBRdtY4XO
-  artifact: /electron-builds\.*\.zip/
   on:
     appveyor_repo_tag: true
