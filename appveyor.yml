@@ -29,8 +29,8 @@ build_script:
   - ps: ls electron-builds
 
 artifacts:
-  - path: path: '**\*.zip'
-  - path: path: '**\electron-builds\*.zip'
+  - path: '**\*.zip'
+  - path: '**\electron-builds\*.zip'
 
 test: off
 
