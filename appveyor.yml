@@ -25,12 +25,14 @@ install:
 build_script:
   - node --version
   - node node_modules\ember-cli\bin\ember electron:package --platform win32 --arch x64
+
+after_build:
   - 7z a electron-builds\%eu_package_name% electron-builds\exercism-gui-win32-x64
   - ps: ls electron-builds
 
 artifacts:
   - path: 'electron-builds\*.zip'
-    name: package
+    name: electron-package
 
 test: off
 
@@ -38,5 +40,6 @@ deploy:
   provider: GitHub
   auth_token:
     secure: 4Lc+r0RBFpZLKT+JZ5tlHQsEttScYJBtrTQ9BmtYQqcZyXlMP8v/+wjrBRdtY4XO
+  artifact: electron-package
   on:
     appveyor_repo_tag: true
